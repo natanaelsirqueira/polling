@@ -1,0 +1,31 @@
+<h1>Listing Polls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Up votes</th>
+      <th>Down votes</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for poll <- @polls do %>
+    <tr>
+      <td><%= poll.description %></td>
+      <td><%= poll.up_votes %></td>
+      <td><%= poll.down_votes %></td>
+
+      <td>
+        <%= link "Show", to: Routes.poll_path(@conn, :show, poll) %>
+        <%= link "Edit", to: Routes.poll_path(@conn, :edit, poll) %>
+        <%= link "Delete", to: Routes.poll_path(@conn, :delete, poll), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Poll", to: Routes.poll_path(@conn, :new) %></span> | 
+<span><%= link "Polling", to: Routes.poll_path(@conn, :polling) %></span>

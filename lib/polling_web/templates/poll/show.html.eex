@@ -1,0 +1,23 @@
+<h1>Show Poll</h1>
+
+<ul>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @poll.description %>
+  </li>
+
+  <li>
+    <strong>Up votes:</strong>
+    <%= @poll.up_votes %>
+  </li>
+
+  <li>
+    <strong>Down votes:</strong>
+    <%= @poll.down_votes %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.poll_path(@conn, :edit, @poll) %></span>
+<span><%= link "Back", to: Routes.poll_path(@conn, :index) %></span>

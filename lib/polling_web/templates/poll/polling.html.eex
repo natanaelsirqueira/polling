@@ -1,0 +1,29 @@
+<h1>Polling</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Up votes</th>
+      <th>Down votes</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for poll <- @polls do %>
+    <tr id=<%= poll.id %>>
+      <td><%= poll.description %></td>
+      <td id="up-votes"><%= poll.up_votes %></td>
+      <td id="down-votes"><%= poll.down_votes %></td>
+
+      <td>
+        <button id="up-button" value=<%= poll.id %>>Up</button>
+        <button id="down-button" value=<%= poll.id %>>Down</button>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "Manage polls", to: Routes.poll_path(@conn, :index) %></span>
